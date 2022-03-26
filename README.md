@@ -26,6 +26,11 @@
 
 Serviço base para microsserviços do Organzier.
 
+## Microsserviços
+- [User Service](https://github.com/patrick095/organizer-user-service)
+- [Item Service](https://github.com/patrick095/organizer-item-service)
+- [Mail Service](https://github.com/patrick095/organizer-mail-service)
+
 ## Installation
 
 ```bash
