@@ -12,11 +12,7 @@ export class AppController {
 
     @Get('/user')
     signin(@Query() body: { username: string; password: string }) {
-        try {
-            return this.appService.signin(body);
-        } catch (e) {
-            return e;
-        }
+        return this.appService.signin(body);
     }
 
     @Get('/item')

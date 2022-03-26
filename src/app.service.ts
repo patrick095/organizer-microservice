@@ -1,5 +1,7 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { catchError } from 'rxjs';
+import { IExceptionError } from './interfaces/error.interface';
 
 @Injectable()
 export class AppService {
@@ -11,7 +13,11 @@ export class AppService {
     }
 
     signin(user: { username: string; password: string }) {
-        return this.userService.send<any>({ role: 'user', cmd: 'signin' }, user);
+        return this.userService.send<any>({ role: 'user', cmd: 'signin' }, user).pipe(
+            catchError((exception: IExceptionError) => {
+                throw new HttpException({ message: exception.message }, exception.status);
+            }),
+        );
     }
 
     getItems(user: { username: string }) {
