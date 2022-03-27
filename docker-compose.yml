@@ -1,0 +1,18 @@
+services:
+    organizer-service:
+        build:
+            context: ./
+            target: dev
+        volumes:
+            - .:/home/node/app
+        restart: always
+        env_file: .env
+        networks:
+            - organizer
+        ports:
+            - 3000:3000
+        command: npm run dev
+
+networks:
+    organizer:
+        driver: bridge
