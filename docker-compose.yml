@@ -3,6 +3,7 @@ services:
         build:
             context: ./
             target: dev
+        container_name: organizer-service
         volumes:
             - .:/home/node/app
         restart: always
@@ -15,4 +16,4 @@ services:
 
 networks:
     organizer:
-        driver: bridge
+        external: true
