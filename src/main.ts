@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
+    const port = process.env.PORT || 3000;
 
     const config = new DocumentBuilder()
         .setTitle('Organizer Service')
@@ -14,6 +15,6 @@ async function bootstrap() {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api', app, document);
 
-    await app.listen(3000, () => console.log('Microservice is listening'));
+    await app.listen(port, () => console.log('Microservice is listening on port ' + port));
 }
 bootstrap();
