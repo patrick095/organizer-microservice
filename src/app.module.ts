@@ -6,7 +6,11 @@ import { AppService } from './app.service';
 @Module({
     imports: [
         ClientsModule.register([
-            { name: 'USER_MICROSERVICE', transport: Transport.TCP, options: { port: 3001 } },
+            {
+                name: 'USER_MICROSERVICE',
+                transport: Transport.TCP,
+                options: { port: 3001 },
+            },
             {
                 name: 'ITEM_MICROSERVICE',
                 transport: Transport.TCP,
